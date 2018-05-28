@@ -1,0 +1,12 @@
+*.cache
+*.pyc
+/redis-stable
+/build
+/dist
+/Reports
+build
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+*.idea
