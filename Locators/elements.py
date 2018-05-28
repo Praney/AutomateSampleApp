@@ -16,3 +16,12 @@ class PageLocators(object):
     navigate = (By.XPATH,'//android.widget.ImageButton[@content-desc="Navigate up"]')
 
     verify = (By.XPATH,"//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ViewFlipper/android.support.v7.widget.RecyclerView/android.widget.LinearLayout[5]/android.widget.RelativeLayout/android.widget.TextView")
+
+    temparrayMax = []
+    temparrayMin = []
+
+    for i in range(1,6):
+        temparrayMax.append((By.XPATH,"//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ViewFlipper/android.view.ViewGroup/android.widget.ScrollView/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[" + str(i) + "]/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.TextView[2]"))
+
+    for j in range(1,6):
+        temparrayMin.append((By.XPATH,"//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.widget.ViewFlipper/android.view.ViewGroup/android.widget.ScrollView/android.widget.LinearLayout/android.widget.FrameLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[" + str(j) + "]/android.widget.FrameLayout/android.widget.RelativeLayout/android.widget.TextView[3]"))

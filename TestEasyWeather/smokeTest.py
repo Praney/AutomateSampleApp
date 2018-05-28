@@ -17,12 +17,31 @@ driver = startup()
 
 class TestWeather:
 
-    def test_tempDublin(self):
+    def test_currentTempinDublin(self):
+        # Test Case to check current temperature of pre existing city 
         checkCity= execution.CityTemp(driver)
-        checkCity.testTemp()
-        # sleep(5)
+        checkCity.reachtoTempPage()
+        checkCity.testTemp(53.35014,-6.266155,3)
+
+    def test_MinTempInDublinFiveDays(self):
+        # Test Case to check mimimum temperature of pre existing city for next five days
+        checkCity= execution.CityTemp(driver)
+        checkCity.testTemp(53.35014,-6.266155,1)
+
+    def test_MaxTempinDublinFiveDays(self):
+        # Test Case to check Maximum Temperature of pre existing city for next five days
+        checkCity= execution.CityTemp(driver)
+        checkCity.testTemp(53.35014,-6.266155,2)
 
     def test_addCity(self):
-        addCity = execution.CityAdd(driver)
+        # Test Case to add new city
+        addCity = execution.CityTemp(driver)
         addCity.addCity()
+    
+    def test_tempInNewCity(self):
+        # Test Case to check all the temperatures of newly added city 
+        temp  = execution.CityTemp(driver)
+        temp.tempNewCity(28.6139391,77.2090212,1)
+        temp.tempNewCity(28.6139391,77.2090212,3)
+        temp.tempNewCity(28.6139391,77.2090212,2)
         driver.quit()

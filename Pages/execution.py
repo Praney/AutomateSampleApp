@@ -16,7 +16,7 @@ from Shpock.API import getWeather
 
 class BasePage(object):
 
-    # """Base class to initialize the base page that will be called from all pages"""
+    # Base class to initialize the base page that will be called from all pages
 
     def __init__(self,driver):
         self.driver = driver
@@ -24,46 +24,76 @@ class BasePage(object):
         
     
 class CityTemp(BasePage):
-    def testTemp(self):
+    
+    def reachtoTempPage(self):
         city = self.driver.find_element(*PageLocators.city)
         city.click()
-        
-        WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.ID,"com.daniloprado.weather:id/textview_temperature")))
 
-        TempDublin = getWeather.weather(53.35014,-6.266155)
-        nowTemp = self.driver.find_element(*PageLocators.temperature)
-        logging.info(TempDublin)
-        logging.info(nowTemp.text)
-        assert TempDublin in nowTemp.text 
+    def testTemp(self,lat,longi,case):
+            
+        if case == 1 :
+            CityTemp.allTempertures(self,lat,longi,1)
+        elif case == 2 :
+            CityTemp.allTempertures(self,lat,longi,2)
+        else :
+            CityTemp.allTempertures(self,lat,longi,3)
 
-        back = self.driver.find_element(*PageLocators.navigate)
-        back.click()
-
-class CityAdd(BasePage):
     def addCity(self):
     
         city = self.driver.find_element(*PageLocators.add)
         city.click()
         
         searchCity = self.driver.find_element(*PageLocators.enterCityName)
-        searchCity.send_keys("perth")
-        selectCity = self.driver.find_element(*PageLocators.cityList)
+        searchCity.send_keys("new delhi")
+        
         sleep(5)
-        try :
-            if selectCity.is_displayed()==True:
-                selectCity.click()
-        except NoSuchElementException:
-            print("No Suggestion found")
-        
-        self.driver.background_app(10)
-        
+
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.ID,"com.daniloprado.weather:id/textview_found_city_name")))
+        selectCity = self.driver.find_element(*PageLocators.cityList)
+        selectCity.click()
+
         added = self.driver.find_element(*PageLocators.verify)
-        assert added.text == "Perth"
+        assert added.text == "New Delhi"
+
+        self.driver.background_app(10)
+
+        added = self.driver.find_element(*PageLocators.verify)
         added.click()
-        currentTemperature = getWeather.weather(-31.950526900000003,115.86045719999998)
-        WebDriverWait(self.driver, 30).until(EC.presence_of_element_located((By.ID,"com.daniloprado.weather:id/textview_temperature")))
-        nowTemp = self.driver.find_element(*PageLocators.temperature)
-        logging.info(currentTemperature)
-        logging.info(nowTemp.text)
-        assert currentTemperature in nowTemp.text
         
+    def allTempertures(self,lat,longi,case):
+        
+        WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.ID,"com.daniloprado.weather:id/textview_temperature")))
+
+        # Call API and get the minimum temperature of the city having lat long
+        if case == 1 :
+            TempDublinMin = getWeather.weather(lat,longi,1)
+
+            for i in range(0,5):
+                daysTempMin = self.driver.find_element(*PageLocators.temparrayMin[i])
+                assert TempDublinMin[i] in daysTempMin.text
+
+        # Call API and get the maximum temperature of the city having lat long
+        elif case == 2 :
+            TempDublinMax = getWeather.weather(lat,longi,2)
+
+            for i in range(0,5):
+                daysTempMax = self.driver.find_element(*PageLocators.temparrayMax[i])
+                assert TempDublinMax[i] in daysTempMax.text
+            back = self.driver.find_element(*PageLocators.navigate)
+            back.click()  
+
+        else :
+        # Call API and get the current temperature of the city having lat long
+            TempDublinNow = getWeather.weather(lat,longi,3)
+            nowTemp = self.driver.find_element(*PageLocators.temperature)
+            assert TempDublinNow in nowTemp.text 
+
+
+    def tempNewCity(self,lat,longi,case):
+               
+        if case == 1 :
+            CityTemp.allTempertures(self,lat,longi,1)
+        elif case == 2 :
+            CityTemp.allTempertures(self,lat,longi,2)
+        else :
+            CityTemp.allTempertures(self,lat,longi,3)
