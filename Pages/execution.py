@@ -55,7 +55,7 @@ class CityTemp(BasePage):
         added = self.driver.find_element(*PageLocators.verify)
         assert added.text == "New Delhi"
 
-        self.driver.background_app(10)
+        self.driver.background_app(5)
 
         added = self.driver.find_element(*PageLocators.verify)
         added.click()

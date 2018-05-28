@@ -385,7 +385,7 @@ function filter_table(elem) {
     not_found_message.hidden = !all_rows_hidden;
 }
 </script>
-    <p>Report generated on 29-May-2018 at 01:59:34 by<a href="https://pypi.python.org/pypi/pytest-html"> pytest-html</a> v1.16.0</p>
+    <p>Report generated on 29-May-2018 at 02:12:51 by<a href="https://pypi.python.org/pypi/pytest-html"> pytest-html</a> v1.16.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -404,7 +404,7 @@ function filter_table(elem) {
         <td>Python</td>
         <td>2.7.13</td></tr></table>
     <h2>Summary</h2>
-    <p>5 tests ran in 81.19 seconds. </p>
+    <p>5 tests ran in 101.01 seconds. </p>
     <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">4 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
@@ -420,16 +420,16 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">smokeTest.py::TestWeather::()::test_tempInNewCity</td>
-          <td class="col-duration">23.55</td>
+          <td class="col-duration">24.20</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">self = &lt;Shpock.TestEasyWeather.smokeTest.TestWeather instance at 0x10cafb830&gt;<br/><br/>    def test_tempInNewCity(self):<br/>        # Test Case to check all the temperatures of newly added city<br/>        temp  = execution.CityTemp(driver)<br/>&gt;       temp.tempNewCity(28.6139391,77.2090212,1)<br/><br/>smokeTest.py:44: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>../Pages/execution.py:95: in tempNewCity<br/>    CityTemp.allTempertures(self,lat,longi,1)<br/>../Pages/execution.py:65: in allTempertures<br/>    WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.ID,"com.daniloprado.weather:id/textview_temperature")))<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.support.wait.WebDriverWait (session="5a938a2a-7322-4373-a87f-7b0e2878f1a4")&gt;<br/>method = &lt;selenium.webdriver.support.expected_conditions.presence_of_element_located object at 0x10cadbb10&gt;, message = ''<br/><br/>    def until(self, method, message=''):<br/>        """Calls the method provided with the driver as an argument until the \<br/>            return value is not False."""<br/>        screen = None<br/>        stacktrace = None<br/>    <br/>        end_time = time.time() + self._timeout<br/>        while True:<br/>            try:<br/>                value = method(self._driver)<br/>                if value:<br/>                    return value<br/>            except self._ignored_exceptions as exc:<br/>                screen = getattr(exc, 'screen', None)<br/>                stacktrace = getattr(exc, 'stacktrace', None)<br/>            time.sleep(self._poll)<br/>            if time.time() &gt; end_time:<br/>                break<br/>&gt;       raise TimeoutException(message, screen, stacktrace)<br/><span class="error">E       TimeoutException: Message:</span><br/><br/>../../vm/lib/python2.7/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException<br/></div></td></tr></tbody>
+            <div class="log">self = &lt;Shpock.TestEasyWeather.smokeTest.TestWeather instance at 0x1083ec518&gt;<br/><br/>    def test_tempInNewCity(self):<br/>        # Test Case to check all the temperatures of newly added city<br/>        temp  = execution.CityTemp(driver)<br/>&gt;       temp.tempNewCity(28.6139391,77.2090212,1)<br/><br/>smokeTest.py:44: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>../Pages/execution.py:95: in tempNewCity<br/>    CityTemp.allTempertures(self,lat,longi,1)<br/>../Pages/execution.py:65: in allTempertures<br/>    WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.ID,"com.daniloprado.weather:id/textview_temperature")))<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.support.wait.WebDriverWait (session="ebacd5c3-a1c2-41f6-895a-290b64b300d9")&gt;<br/>method = &lt;selenium.webdriver.support.expected_conditions.presence_of_element_located object at 0x10842e2d0&gt;, message = ''<br/><br/>    def until(self, method, message=''):<br/>        """Calls the method provided with the driver as an argument until the \<br/>            return value is not False."""<br/>        screen = None<br/>        stacktrace = None<br/>    <br/>        end_time = time.time() + self._timeout<br/>        while True:<br/>            try:<br/>                value = method(self._driver)<br/>                if value:<br/>                    return value<br/>            except self._ignored_exceptions as exc:<br/>                screen = getattr(exc, 'screen', None)<br/>                stacktrace = getattr(exc, 'stacktrace', None)<br/>            time.sleep(self._poll)<br/>            if time.time() &gt; end_time:<br/>                break<br/>&gt;       raise TimeoutException(message, screen, stacktrace)<br/><span class="error">E       TimeoutException: Message:</span><br/><br/>../../vm/lib/python2.7/site-packages/selenium/webdriver/support/wait.py:80: TimeoutException<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">smokeTest.py::TestWeather::()::test_currentTempinDublin</td>
-          <td class="col-duration">7.02</td>
+          <td class="col-duration">11.87</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -438,7 +438,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">smokeTest.py::TestWeather::()::test_MinTempInDublinFiveDays</td>
-          <td class="col-duration">2.48</td>
+          <td class="col-duration">3.57</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -447,7 +447,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">smokeTest.py::TestWeather::()::test_MaxTempinDublinFiveDays</td>
-          <td class="col-duration">3.12</td>
+          <td class="col-duration">3.10</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -456,7 +456,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">smokeTest.py::TestWeather::()::test_addCity</td>
-          <td class="col-duration">21.24</td>
+          <td class="col-duration">30.85</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
