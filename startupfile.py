@@ -2,18 +2,10 @@ import os
 import sys
 from appium import webdriver
 import subprocess
-from time import sleep
-import logging
-
-logger = logging.getLogger('ltqa-mobile-service')
-logger.propagate = False
-
-logger.debug("Initializing")
-print("Initializing...")
 
 def startup():
     dir = os.path.dirname(__file__)
-    apkpath = os.path.join(dir,'APK/app-debug.apk')
+    apkpath = os.path.join(dir,'APK/app-debug-fix.apk')
     desired_caps = {}
     desired_caps['platformName'] = 'Android'
     desired_caps['platformVersion'] = '8.0'

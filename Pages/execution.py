@@ -1,16 +1,12 @@
-from time import sleep
+import re
+import os,sys
 from selenium import webdriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from Shpock.Locators.elements import PageLocators
-import logging
-from appium.webdriver.common.touch_action import TouchAction
-from selenium import webdriver
 from appium import webdriver
-import re
-import os,sys
 from Shpock.API import getWeather
 
 
@@ -20,8 +16,6 @@ class BasePage(object):
 
     def __init__(self,driver):
         self.driver = driver
-        driver.implicitly_wait(5)
-        
     
 class CityTemp(BasePage):
     
@@ -45,10 +39,9 @@ class CityTemp(BasePage):
         
         searchCity = self.driver.find_element(*PageLocators.enterCityName)
         searchCity.send_keys("new delhi")
-        
-        sleep(5)
 
         WebDriverWait(self.driver, 20).until(EC.presence_of_element_located((By.ID,"com.daniloprado.weather:id/textview_found_city_name")))
+
         selectCity = self.driver.find_element(*PageLocators.cityList)
         selectCity.click()
 
@@ -88,12 +81,3 @@ class CityTemp(BasePage):
             nowTemp = self.driver.find_element(*PageLocators.temperature)
             assert TempDublinNow in nowTemp.text 
 
-
-    def tempNewCity(self,lat,longi,case):
-               
-        if case == 1 :
-            CityTemp.allTempertures(self,lat,longi,1)
-        elif case == 2 :
-            CityTemp.allTempertures(self,lat,longi,2)
-        else :
-            CityTemp.allTempertures(self,lat,longi,3)
