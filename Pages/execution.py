@@ -8,7 +8,7 @@ from selenium.common.exceptions import NoSuchElementException
 from Shpock.Locators.elements import PageLocators
 from appium import webdriver
 from Shpock.API import getWeather
-
+from appium.webdriver.common.touch_action import TouchAction
 
 class BasePage(object):
 
@@ -31,6 +31,7 @@ class CityTemp(BasePage):
             CityTemp.allTempertures(self,lat,longi,2)
         else :
             CityTemp.allTempertures(self,lat,longi,3)
+            self.driver.swipe(519, 530, 519, 1000, 400)
 
     def addCity(self):
     
