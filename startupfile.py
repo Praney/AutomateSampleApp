@@ -5,7 +5,7 @@ import subprocess
 
 def startup():
     dir = os.path.dirname(__file__)
-    apkpath = os.path.join(dir,'APK/app-debug-fix.apk')
+    apkpath = os.path.join(dir,'APK/app-debug.apk')
     desired_caps = {}
     desired_caps['platformName'] = 'Android'
     desired_caps['platformVersion'] = '8.0'
